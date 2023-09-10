@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+	  <PackageId>XFrame.Aggregates.Queries.Extensions</PackageId>
+	  <Version>7.0.0</Version>
+	  <Authors>Lwandile Mfundisi</Authors>
+	  <Description>XFrame.Aggregates.Queries.Extensions houses concept of queries extensions</Description>
+	  <IsPackable>true</IsPackable>
+	  <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+	<Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
+		<ItemGroup>
+			<BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+		</ItemGroup>
+	</Target>
+
+	<ItemGroup>
+		<PackageReference Include="XFrame.Aggregates.Queries" Version="7.0.0" />
+		<PackageReference Include="XFrame.DomainContainers" Version="7.0.0" />
+	</ItemGroup>
+
+</Project>
